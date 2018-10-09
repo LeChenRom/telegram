@@ -1,0 +1,28 @@
+使用PPA在Debian8系统上安装Telegram聊天工具
+
+你可以在Debian系统上使用PPA来安装软件包。不过与ubuntu不同的是，Debian用户需要手动添加软件源，而不是像ubuntu那样输入一行命令后就会自动添加软件源。
+
+打开终端，登录为root用户。
+
+su
+
+然后编辑/etc/apt/sources.list文件。
+
+nano /etc/apt/sources.list
+
+将下面两行文字添加到文件末尾。
+
+deb http://ppa.launchpad.net/noobslab/apps/ubuntu trusty main 
+deb-src http://ppa.launchpad.net/noobslab/apps/ubuntu trusty main
+
+注意，Debian8对应的ubuntu版本代号是trusty。添加后保存文件。现在输入下面的命令添加这个PPA的PGP公钥。
+
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F59EAE4D
+
+命令完成后，更新本地软件包索引并安装Telegram即时通讯工具。
+
+apt-get update
+
+apt-get install telegram-desktop
+
+现在你可以在程序菜单里找到Telegram并启动它了。如果需要以上PPA的更多信息，请点击这里。这个PPA的独特之处在于软件包偏向于Debian系统，所以尽管PPA是为ubuntu设计的，但这Debian系统安装这个PPA里的软件包很少会出现依赖问题。
